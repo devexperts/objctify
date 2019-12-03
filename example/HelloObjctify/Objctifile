@@ -1,0 +1,10 @@
+# Basic Objctifile
+
+# A name for your framework
+project_name 'ObjctifiedModule'
+# Put here path to java sources root directory
+java_sources 'javaSources'
+
+j2objc_config do |j2objc_config|
+  j2objc_config.distr_dir = "j2objc-dist"
+end

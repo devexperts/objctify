@@ -1,0 +1,13 @@
+# Basic Objctifile
+
+# A name for your framework
+# project_name 'Name your framework'
+
+# Put here path to java sources root directory
+# java_sources 'path_to_java_source'
+
+# Configure j2objc
+j2objc_config do |j2objc_config|
+  j2objc_config.distr_dir = "path_to_j2objc_distributive"
+#  j2objc_config.prefixes_file_path = "path_to/prefixes.properties"
+end
