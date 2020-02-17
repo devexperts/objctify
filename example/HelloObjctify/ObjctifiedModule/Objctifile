@@ -7,4 +7,5 @@ java_sources 'javaSources'
 
 j2objc_config do |j2objc_config|
   j2objc_config.distr_dir = "j2objc-dist"
+  j2objc_config.extra_cli_args = "-Xno-source-headers --strip-reflection"
 end

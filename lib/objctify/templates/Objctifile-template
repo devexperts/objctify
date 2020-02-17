@@ -10,4 +10,5 @@
 j2objc_config do |j2objc_config|
   j2objc_config.distr_dir = "path_to_j2objc_distributive"
 #  j2objc_config.prefixes_file_path = "path_to/prefixes.properties"
+#  j2objc_config.extra_cli_args = "-Xno-source-headers --strip-reflection"
 end

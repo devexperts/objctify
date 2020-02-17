@@ -42,7 +42,7 @@ module Objctify
           prefix_file_path = File.expand_path(project.j2objc_config.prefixes_file_path)
         end
 
-        Objctify::translate_files(java_sources, prefix_file_path, j2objc_home, framework_name)
+        Objctify::translate_files(java_sources, prefix_file_path, j2objc_home, framework_name, project.j2objc_config.extra_cli_args)
         puts 'Cleaning'
         Objctify::fix_imports(framework_name, prefix_file_path)
         puts 'Plumbing'
