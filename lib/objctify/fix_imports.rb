@@ -10,35 +10,35 @@ module Objctify
   def self.fix_imports(framework_name, prefix_file_path)
     prefixes = J2ObjCPrefixes.new(prefix_file_path)
 
-    header_map = Hash.new
+    header_map = {}
     Dir.chdir(framework_name) do
-      Pathname(".").find do |path|
+      Pathname('.').find do |path|
         dir, base = path.split
 
-        if path.file?
-          prefix = prefixes.prefix_for(path.dirname.to_s)
-          path.rename(dir.to_s + '/' + prefix + base.to_s)
-          header_map[path.to_s.sub("./", "")] = prefix + base.to_s
-        end
+        next unless path.file?
+
+        prefix = prefixes.prefix_for(path.dirname.to_s)
+        path.rename(dir.to_s + '/' + prefix + base.to_s)
+        header_map[path.to_s.sub('./', '')] = prefix + base.to_s
       end
     end
 
     Dir.chdir(framework_name) do
-      Pathname(".").find do |path|
-        if path.file?
-          import_reg_exp = /(#[a-zA-Z]+\s+"([a-zA-Z_0-9\/]+.[hm]{1})")/
+      Pathname('.').find do |path|
+        next unless path.file?
 
-          text = File.read(path)
-          text.scan(import_reg_exp).each { |import|
+        import_reg_exp = %r{(#[a-zA-Z]+\s+"([a-zA-Z_0-9/]+.[hm]{1})")}
 
-            if (mapped_import = header_map[import[1]]) and !mapped_import.nil?
-              text = text.gsub(import[1], mapped_import)
-            end
-          }
+        text = File.read(path)
+        text.scan(import_reg_exp).each do |import|
 
-          File.open(path, "w") { |f|
-            f.write(text)
-          }
+          if (mapped_import = header_map[import[1]]) && !mapped_import.nil?
+            text = text.gsub(import[1], mapped_import)
+          end
+        end
+
+        File.open(path, 'w') do |f|
+          f.write(text)
         end
       end
     end

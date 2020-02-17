@@ -14,31 +14,38 @@ module Objctify
       def run
         file_path = "#{Dir.pwd}/Objctifile"
 
-        raise Objctify::Informative, "Couldn't find Objctifile" unless File.exists?(file_path)
+        unless File.exist?(file_path)
+          raise Objctify::Informative, "Couldn't find Objctifile"
+        end
 
         file_contents = File.read(file_path)
 
         project = Context.new
         project.instance_eval(file_contents, file_path)
 
-        raise Objctify::Informative, "Project name is not provided in Objctifile" unless
-            project.project_name_param != nil
-        raise Objctify::Informative, "Path to Java sources is not provided in Objctifile" unless
-            project.java_sources_param != nil
+        if project.project_name_param.nil?
+          raise Objctify::Informative, "Project name is not provided in Objctifile"
+        end
+        if project.java_sources_param.nil?
+          raise Objctify::Informative, "Path to Java sources is not provided in Objctifile"
+        end
         raise Objctify::Informative, "Provided Java sources directory does not exist: #{project.java_sources_param}" unless
-            Dir.exists?(project.java_sources_param)
+            Dir.exist?(project.java_sources_param)
 
         framework_name = project.project_name_param
         java_sources = File.expand_path(project.java_sources_param)
         j2objc_home = File.expand_path(project.j2objc_config.distr_dir)
 
         raise Objctify::Informative, "J2ObjC home directory does not exist: #{j2objc_home}" unless
-            Dir.exists?(j2objc_home)
+            Dir.exist?(j2objc_home)
         raise Objctify::Informative, "J2ObjC home directory doesn't contain j2objc: #{j2objc_home}" unless
-            File.exists?("#{j2objc_home}/j2objc")
+            File.exist?("#{j2objc_home}/j2objc")
 
         unless project.j2objc_config.prefixes_file_path.nil?
-          raise Objctify::Informative, "Specified prefixes files does not exist: #{project.j2objc_config.prefixes_file_path}" unless File.exists?(project.j2objc_config.prefixes_file_path)
+          unless File.exist?(project.j2objc_config.prefixes_file_path)
+            raise Objctify::Informative, "Specified prefixes files does not exist: #{project.j2objc_config.prefixes_file_path}"
+          end
+
           prefix_file_path = File.expand_path(project.j2objc_config.prefixes_file_path)
         end
 
