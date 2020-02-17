@@ -8,8 +8,8 @@
 module Objctify
   class Command
     class Init < Command
-      self.summary = 'Creates xcodeproj from java sources with j2objc' #TODO
-      self.description = 'Creates xcodeproj from java source with j2objc using configuration from Objctifile' #TODO
+      self.summary = 'Initialises an Objctifile in the current directory.'
+      self.description = 'Initialises an Objctifile in the current directory from a default template.'
 
       def run
         template_path = "#{File.dirname(__FILE__)}/../templates/Objctifile-template"
