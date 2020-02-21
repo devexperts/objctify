@@ -38,7 +38,7 @@ module Objctify
             File.exists?("#{j2objc_home}/j2objc")
 
         unless project.j2objc_config.prefixes_file_path.nil?
-          raise Objctify::Informative, "Specified prefixes files does not exist: #{project.j2objc_config.prefixes_file_path}" unless File.exists?(project.j2objc_config.prefixes_file_path)
+          raise Objctify::Informative, "Specified prefixes files do not exist: #{project.j2objc_config.prefixes_file_path}" unless File.exists?(project.j2objc_config.prefixes_file_path)
           prefix_file_path = File.expand_path(project.j2objc_config.prefixes_file_path)
         end
 
