@@ -1,6 +1,6 @@
 # objctify
 
-## Pronounciation
+## Pronunciation
 
 Pronounced as `objectify`
 
