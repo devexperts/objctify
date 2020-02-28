@@ -16,7 +16,7 @@ module Objctify
     self.abstract_command = true
     self.command = 'objctify'
     self.version = Objctify::VERSION
-    self.description = 'Make life easier' #TODO
-    self.plugin_prefixes = %w(claide objctify)
+    self.description = 'A tool'
+    self.plugin_prefixes = %w[claide objctify]
   end
 end

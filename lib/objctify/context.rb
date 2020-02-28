@@ -8,14 +8,14 @@
 module Objctify
   class Context
     class J2ObjCSettings
-      attr_accessor :distr_dir, :prefixes_file_path
+      attr_accessor :distr_dir, :prefixes_file_path, :extra_cli_args
     end
 
-    attr_accessor :project_name_param, :java_sources_param, :j2objc_config
+    attr_accessor :project_name_param, :java_sources_param
 
     def initialize
       @j2objc_config = J2ObjCSettings.new
-      @project_name = ""
+      @project_name = ''
     end
 
     def project_name(project_name)
