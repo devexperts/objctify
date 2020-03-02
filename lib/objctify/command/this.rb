@@ -38,12 +38,12 @@ module Objctify
 
         raise Objctify::Informative, "J2ObjC home directory does not exist: #{j2objc_home}" unless
             Dir.exist?(j2objc_home)
-        raise Objctify::Informative, "J2ObjC home directory doesn't contain j2objc: #{j2objc_home}" unless
+        raise Objctify::Informative, "J2ObjC home directory does not contain j2objc: #{j2objc_home}" unless
             File.exist?("#{j2objc_home}/j2objc")
 
         unless project.j2objc_config.prefixes_file_path.nil?
           unless File.exist?(project.j2objc_config.prefixes_file_path)
-            raise Objctify::Informative, "Specified prefixes files do not exist: #{project.j2objc_config.prefixes_file_path}"
+            raise Objctify::Informative, "Specified prefixes file does not exist: #{project.j2objc_config.prefixes_file_path}"
           end
 
           prefix_file_path = File.expand_path(project.j2objc_config.prefixes_file_path)
