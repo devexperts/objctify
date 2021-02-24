@@ -2,12 +2,12 @@
 
 ## Pronunciation
 
-Pronounced as `objectify`
+Pronounced as `objectify` | ɒbˈdʒɛktɪfʌɪ |
 
 ## Description
 
-A gem which helps you literally use Java on iOS. It is a wrapper of J2ObjC tool by Google, which handles the most of
-routine actions. Basically it turns your Java sources into an iOS framework ready to use in you iOS projects.
+A gem which helps you use Java on iOS. It is a wrapper of J2ObjC tool by Google, which handles the most of
+routine actions. It turns your Java sources into an iOS framework ready to use in your iOS projects.
 
 ## Installation
 
@@ -28,4 +28,4 @@ Install it as:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/devexperts/objctify.
+Bug reports and pull requests are welcome on GitHub at https://github.com/devexperts/objctify
